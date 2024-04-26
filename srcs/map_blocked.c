@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   map_blocked.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 09:18:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/26 15:34:18 by ybouaoud         ###   ########.fr       */
+/*   Created: 2024/04/26 15:15:24 by ybouaoud          #+#    #+#             */
+/*   Updated: 2024/04/26 15:34:57 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int main(int argc, char **argv)
-{
-	t_long game;
-	if (argc != 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Usage: ./so_long [map.ber]\n", 2);
-		return (1);
-	}
-	char *map = read_map(argv[1]);
-	char **map2 = ft_split(map, '\n');
-	parse_map(argv[1], map2);
-	ft_free(map2);
-	display_win(&game);
-	return (0);
-}
+// void	map_blocked(char **map)
+// {
+	
+// }

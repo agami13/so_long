@@ -1,30 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   display_win.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/26 09:18:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/26 15:34:18 by ybouaoud         ###   ########.fr       */
+/*   Created: 2024/04/26 15:30:38 by ybouaoud          #+#    #+#             */
+/*   Updated: 2024/04/26 15:33:15 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int main(int argc, char **argv)
+void	display_win(t_long *game)
 {
-	t_long game;
-	if (argc != 2)
-	{
-		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Usage: ./so_long [map.ber]\n", 2);
-		return (1);
-	}
-	char *map = read_map(argv[1]);
-	char **map2 = ft_split(map, '\n');
-	parse_map(argv[1], map2);
-	ft_free(map2);
-	display_win(&game);
-	return (0);
+	game->mlx = mlx_init();
+	game->window = mlx_new_window(game->mlx, WIDTH, HEIGHT, "so_long");
+	mlx_loop(game->mlx);
 }
