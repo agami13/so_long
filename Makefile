@@ -8,12 +8,13 @@ SRCS	=	srcs/so_long.c \
 			srcs/utils.c \
 			srcs/map_blocked.c \
 			srcs/display_win.c \
+			srcs/display_map.c \
 
 OBJ		=	$(SRCS:.c=.o)
 
 CC		=	cc
 
-MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext
+MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 
 CFLAGS	=	-Wall -Wextra -Werror
 

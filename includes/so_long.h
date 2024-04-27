@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/26 15:47:07 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/04/27 10:37:30 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "../mlx/minilibx-linux/mlx.h"
 # include "../libft/libft.h"
-
+# include <math.h>
 
 // struct for the game
 typedef struct s_long
@@ -23,7 +23,8 @@ typedef struct s_long
 	void	*mlx;
 	void	*window;
 	void	*img;
-	int		*addr;
+	char	*addr;
+	char	**map;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -48,7 +49,9 @@ void	display_player(t_long *game, char **map);
 void	display_collectible(t_long *game, char **map);
 void	display_exit(t_long *game, char **map);
 void	display_background(t_long *game, char **map);
-
+void	display_square(t_long *game, int x, int y, int color);
+void	display_circle(t_long *game, int x, int y, int color);
+void	display_triangle(t_long *game, int x, int y, int color);
 
 // parsing functions
 void	parse_map(char *argv, char **map);
