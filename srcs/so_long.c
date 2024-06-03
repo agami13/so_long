@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/27 10:38:45 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/06/02 21:35:14 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 	char **map2 = ft_split(map, '\n');
 	game.map = map2;
 	parse_map(argv[1], map2);
+	// map_blocked(map2);
 	ft_free(map2);
 	display_win(&game);
 	return (0);

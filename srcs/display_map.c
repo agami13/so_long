@@ -6,17 +6,13 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:33:49 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/27 10:46:58 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:21:07 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	display_map(t_long *game, char **map)
-{
-	int i;
-	int j;
+// void	display_map(t_long *game, char **map)
+// {
 
-	i = 0;
-
-}
+// }

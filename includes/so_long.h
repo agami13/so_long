@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/27 10:37:30 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:58:45 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,11 @@ typedef struct s_long
 // macros
 # define WIDTH 800
 # define HEIGHT 800
+# define ESC 65307
+# define W 119
+# define A 97
+# define S 115
+# define D 100
 
 // window functions
 void	display_win(t_long *game);
@@ -64,6 +69,7 @@ void	map_valid3(int E, int player, int collectible);
 void	map_valid(char **map);
 void	ft_free(char **strs);
 void 	read_helper(char *line, char **map, char *argv);
+void	map_blocked(char **map);
 // void	map_blocked(char **map);
 
 char	*read_map(char *argv);
