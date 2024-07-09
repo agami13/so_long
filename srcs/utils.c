@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:50:50 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/26 15:14:05 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/08 20:00:39 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,5 @@ char	*read_map(char *argv)
 	}
 	read_helper(line, &map, argv);
 	free(line);
-	ft_printf("%s\n", map);
 	return (map);
 }

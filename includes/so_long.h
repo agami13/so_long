@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/27 15:58:45 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/09 04:07:40 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,45 +18,62 @@
 # include <math.h>
 
 // struct for the game
-typedef struct s_long
+typedef struct s_map
+{
+	void	*img;
+	char	*path;
+	int		x;
+	int		y;
+	int		player_x;
+	int		player_y;
+	int		exit_x;
+	int		exit_y;
+	int		moves;
+	char	**map;
+	struct  s_map *next;
+}			t_map;
+
+typedef struct s_window
 {
 	void	*mlx;
 	void	*window;
 	void	*img;
 	char	*addr;
-	char	**map;
+	int 	WIDTH;
+	int 	HEIGHT;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
-	int		width;
-	int		height;
-	int		x;
-	int		y;
-	int		player;
-	int		collectible;
-	int		exit;
-	int		moves;
-}			t_long;
+} 			t_window;
+
+// typedef struct s_long
+// {
+// 	char	**map;
+// 	int x;
+// 	int y;
+// 	t_map	*map_info;
+// }			t_long;
+
 
 // macros
-# define WIDTH 800
-# define HEIGHT 800
 # define ESC 65307
 # define W 119
 # define A 97
 # define S 115
 # define D 100
+# define TILE_SIZE 32
+// #define MLX_SYNC_IMAGE_WRITABLE		1
+// #define MLX_SYNC_WIN_FLUSH_CMD		2
+// #define MLX_SYNC_WIN_CMD_COMPLETED	3
 
 // window functions
-void	display_win(t_long *game);
-void	display_map(t_long *game, char **map);
-void	display_player(t_long *game, char **map);
-void	display_collectible(t_long *game, char **map);
-void	display_exit(t_long *game, char **map);
-void	display_background(t_long *game, char **map);
-void	display_square(t_long *game, int x, int y, int color);
-void	display_circle(t_long *game, int x, int y, int color);
-void	display_triangle(t_long *game, int x, int y, int color);
+void    put_img(t_window *game, char *path, int x, int y);
+int     map_width(char **map);
+int     map_height(char **map);
+int		ft_action(int keycode, t_window *game);
+void    display_win(t_map *map_info);
+// void    display_map(t_window *game, t_map *map_info);
+void    put_map(t_window *game, t_map *map);
 
 // parsing functions
 void	parse_map(char *argv, char **map);
@@ -69,8 +86,12 @@ void	map_valid3(int E, int player, int collectible);
 void	map_valid(char **map);
 void	ft_free(char **strs);
 void 	read_helper(char *line, char **map, char *argv);
-void	map_blocked(char **map);
+char	**map_reader(char *arv);
+t_map	*struct_filler(char **map);
+void    player_pos(t_map *map_info);
+void    exit_pos(t_map *map_info);
 // void	map_blocked(char **map);
+
 
 char	*read_map(char *argv);
 

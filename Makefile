@@ -8,6 +8,7 @@ SRCS	=	srcs/so_long.c \
 			srcs/utils.c \
 			srcs/map_blocked.c \
 			srcs/display_win.c \
+			srcs/struct_fill.c \
 			srcs/display_map.c \
 
 OBJ		=	$(SRCS:.c=.o)
@@ -16,20 +17,20 @@ CC		=	cc
 
 MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra 
 
 LIB_PATH =	libft/
 
 all: $(NAME)
 
 $(NAME):	$(OBJ) $(LIB_PATH) $(LIB)
-			$(CC) $(CFLAGS) $(OBJ) -L $(LIB_PATH) $(MLX) -lft -o $(NAME)
+			$(CC) $(CFLAGS) -g $(OBJ) -L $(LIB_PATH) $(MLX) -lft -o $(NAME)
 
 $(LIB_PATH) $(LIB):
 			$(MAKE) -s -C $(LIB_PATH)
 
 %.o	 : %.c
-			$(CC) $(CFLAGS) -c $< -o $@
+			$(CC) $(CFLAGS) -g -c $< -o $@
 
 clean:
 			$(RM) $(OBJ)
