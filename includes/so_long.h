@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/12 01:34:06 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/12 02:58:44 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,6 @@ typedef struct s_map
 	char	**map;
 	struct  s_map *next;
 }			t_map;
-
-// typedef	struct s_player
-// {
-// 	char	*img;
-// 	char	*left;
-// 	char	*right;
-// 	char	*up;
-// 	char	*down;
-// 	int		x;
-// 	int		y;
-// }			t_player;
 
 typedef struct s_window
 {
@@ -73,13 +62,14 @@ typedef struct s_window
 
 
 // window functions
+void    clean(t_window *game);
 void    put_img(t_window *game, char *path, int x, int y);
 int     map_width(char **map);
 int     map_height(char **map);
 int		ft_action(int keycode, t_window *game);
 void    display_win(t_map *map_info);
 // void    display_map(t_window *game, t_map *map_info);
-void    put_map(t_window *game, char **map);
+void    put_map(t_window *game, char **map, char *player_img);
 
 // movement functions
 void    up_handler(int keycode, t_window *game);

@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 10:33:49 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/12 01:33:46 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/12 02:32:52 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void collectibles_count(t_window *map)
         i++;
     }
 }
-void    put_map(t_window *game, char **map2)
+void    put_map(t_window *game, char **map2, char *player_img)
 {
     int i = 0;
     int j;
@@ -78,7 +78,7 @@ void    put_map(t_window *game, char **map2)
             else if (map2[i][j] == '0')
                 put_img(game, "./imgs/floor.xpm", j * TILE_SIZE, i * TILE_SIZE);
             else if (map2[i][j] == 'P')
-                put_img(game, "./imgs/front.xpm", j * TILE_SIZE, i * TILE_SIZE);
+                put_img(game, player_img, j * TILE_SIZE, i * TILE_SIZE);
             else if (map2[i][j] == 'E')
                 put_img(game, "./imgs/portal.xpm", j * TILE_SIZE, i * TILE_SIZE);
             else if (map2[i][j] == 'C')

@@ -8,6 +8,7 @@ SRCS	=	srcs/so_long.c \
 			srcs/utils.c \
 			srcs/map_blocked.c \
 			srcs/movment.c \
+			srcs/finish.c \
 			srcs/display_win.c \
 			srcs/struct_fill.c \
 			srcs/display_map.c \
