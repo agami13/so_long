@@ -7,6 +7,7 @@ SRCS	=	srcs/so_long.c \
 			srcs/parsing_utils.c \
 			srcs/utils.c \
 			srcs/map_blocked.c \
+			srcs/movment.c \
 			srcs/display_win.c \
 			srcs/struct_fill.c \
 			srcs/display_map.c \
@@ -17,7 +18,7 @@ CC		=	cc
 
 MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 
-CFLAGS	=	-Wall -Wextra 
+CFLAGS	=	-Wall -Wextra -g
 
 LIB_PATH =	libft/
 

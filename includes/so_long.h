@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/09 04:07:40 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/12 01:34:06 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,21 @@ typedef struct s_map
 	char	*path;
 	int		x;
 	int		y;
-	int		player_x;
-	int		player_y;
-	int		exit_x;
-	int		exit_y;
 	int		moves;
 	char	**map;
 	struct  s_map *next;
 }			t_map;
+
+// typedef	struct s_player
+// {
+// 	char	*img;
+// 	char	*left;
+// 	char	*right;
+// 	char	*up;
+// 	char	*down;
+// 	int		x;
+// 	int		y;
+// }			t_player;
 
 typedef struct s_window
 {
@@ -44,15 +51,16 @@ typedef struct s_window
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	char	*left;
+	char	*right;
+	char	*up;
+	char	*down;
+	char	**map;
+	int	collectibles;
+	int		x;
+	int		y;
+	
 } 			t_window;
-
-// typedef struct s_long
-// {
-// 	char	**map;
-// 	int x;
-// 	int y;
-// 	t_map	*map_info;
-// }			t_long;
 
 
 // macros
@@ -62,9 +70,7 @@ typedef struct s_window
 # define S 115
 # define D 100
 # define TILE_SIZE 32
-// #define MLX_SYNC_IMAGE_WRITABLE		1
-// #define MLX_SYNC_WIN_FLUSH_CMD		2
-// #define MLX_SYNC_WIN_CMD_COMPLETED	3
+
 
 // window functions
 void    put_img(t_window *game, char *path, int x, int y);
@@ -73,7 +79,15 @@ int     map_height(char **map);
 int		ft_action(int keycode, t_window *game);
 void    display_win(t_map *map_info);
 // void    display_map(t_window *game, t_map *map_info);
-void    put_map(t_window *game, t_map *map);
+void    put_map(t_window *game, char **map);
+
+// movement functions
+void    up_handler(int keycode, t_window *game);
+void    down_handler(int keycode, t_window *game);
+void    left_handler(int keycode, t_window *game);
+void    right_handler(int keycode, t_window *game);
+void 	collectibles_count(t_window *map);
+void 	player_pos(t_window *game, char **map);
 
 // parsing functions
 void	parse_map(char *argv, char **map);
@@ -88,8 +102,6 @@ void	ft_free(char **strs);
 void 	read_helper(char *line, char **map, char *argv);
 char	**map_reader(char *arv);
 t_map	*struct_filler(char **map);
-void    player_pos(t_map *map_info);
-void    exit_pos(t_map *map_info);
 // void	map_blocked(char **map);
 
 
