@@ -6,25 +6,16 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/09 10:20:20 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 20:03:53 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	**map_reader(char *arv)
-{
-	char	*line;
-	char	**map;
-
-	line = read_map(arv);
-	map = ft_split(line, '\n');
-	return (map);
-}
-
 int main(int argc, char **argv)
 {
 	char **map;
+	char **map_test;
 	t_map *map_info;
 
 	if (argc != 2)
@@ -34,9 +25,14 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	map = map_reader(argv[1]);
+	map_test = map_reader(argv[1]);
 	parse_map(argv[1], map);
+	if (floodfill_app(map_test, get_x(map_test), get_y(map_test)) == 0)
+	{
+		ft_free(map);
+		return (0);
+	}
 	map_info = struct_filler(map);
 	display_win(map_info);
-	ft_free(map);
 	return (0);
 }

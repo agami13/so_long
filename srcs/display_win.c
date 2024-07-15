@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:30:38 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/12 03:06:04 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 19:48:49 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,7 @@ int	ft_action(int keycode, t_window *game)
     static int i = 0;
     if (keycode == ESC)
     {
-        mlx_destroy_image(game->mlx, game->img);
-        mlx_destroy_window(game->mlx, game->window);
+        clean(game);
         exit(0);
     }
     if (keycode == W || keycode == A || keycode == S || keycode == D)
@@ -32,8 +31,6 @@ int	ft_action(int keycode, t_window *game)
             down_handler(keycode, game);
         else if (keycode == A)
             left_handler(keycode, game);
-        else
-            i--;
         ft_printf("Moves: %d\n", i);
     }
     return (0);
@@ -49,6 +46,7 @@ void    put_img(t_window *game, char *path, int x, int y)
     {
         ft_putstr_fd("Error\n", 2);
         ft_putstr_fd("Texture not found\n", 2);
+        clean(game);
         exit(1);
     }
     mlx_put_image_to_window(game->mlx, game->window, img, x, y);

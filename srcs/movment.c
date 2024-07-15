@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/09 08:32:26 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/12 03:08:02 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/12 19:48:25 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@ void    up_handler(int keycode, t_window *game)
             return ;
         else if (game->map[game->y - 1][game->x] == 'E' && game->collectibles != 0)
         {
-            ft_putstr_fd("You need to collect all the collectibles\n", 1);
+            ft_putstr_fd("You need to collect all the collectibles!\n", 1);
             return ;
         }
         else if (game->map[game->y - 1][game->x] == 'E' && game->collectibles == 0)
         {
-            ft_putstr_fd("You Won\n", 1);
+            ft_putstr_fd("You Won!\n", 1);
             clean(game);
             exit(0);
         }
@@ -45,12 +45,12 @@ void    down_handler(int keycode, t_window *game)
             return ;
         else if (game->map[game->y + 1][game->x] == 'E' && game->collectibles != 0)
         {
-            ft_putstr_fd("You need to collect all the collectibles\n", 1);
+            ft_putstr_fd("You need to collect all the collectibles!\n", 1);
             return ;
         }
         else if (game->map[game->y + 1][game->x] == 'E' && game->collectibles == 0)
         {
-            ft_putstr_fd("You Won\n", 1);
+            ft_putstr_fd("You Won!\n", 1);
             clean(game);
             exit(0);
         }
@@ -70,12 +70,12 @@ void    left_handler(int keycode, t_window *game)
             return ;
         else if (game->map[game->y][game->x - 1] == 'E' && game->collectibles != 0)
         {
-            ft_putstr_fd("You need to collect all the collectibles\n", 1);
+            ft_putstr_fd("You need to collect all the collectibles!\n", 1);
             return ;
         }
         else if (game->map[game->y][game->x - 1] == 'E' && game->collectibles == 0)
         {
-            ft_putstr_fd("You Won\n", 1);
+            ft_putstr_fd("You Won!\n", 1);
             clean(game);
             exit (0);
         }
@@ -96,12 +96,12 @@ void    right_handler(int keycode, t_window *game)
             return ;
         else if (game->map[game->y][game->x + 1] == 'E' && game->collectibles != 0)
         {
-            ft_putstr_fd("You need to collect all the collectibles\n", 1);
+            ft_putstr_fd("You need to collect all the collectibles!\n", 1);
             return ;
         }
         else if (game->map[game->y][game->x + 1] == 'E' && game->collectibles == 0)
         {
-            ft_putstr_fd("You Won\n", 1);
+            ft_putstr_fd("You Won!\n", 1);
             clean(game);
             exit(0);
         }

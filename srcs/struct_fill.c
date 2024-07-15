@@ -6,11 +6,22 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:04:54 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/12 01:32:31 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 19:33:23 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+char	**map_reader(char *arv)
+{
+	char	*line;
+	char	**map;
+
+	line = read_map(arv);
+	map = ft_split(line, '\n');
+	free(line);
+	return (map);
+}
 
 void player_pos(t_window *game, char **map)
 {
@@ -39,6 +50,7 @@ t_map	*struct_filler(char **map)
     t_map *map_info;
     
     map_info = malloc(sizeof(t_map));
+    map_info->map_test = map;
     map_info->map = map;
     map_info->moves = 0;
     map_info->x = 0;

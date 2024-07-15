@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/12 02:58:44 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 21:04:25 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef struct s_map
 	int		x;
 	int		y;
 	int		moves;
-	char	**map;
-	struct  s_map *next;
+	char	**map_test;
+	char 	**map;
 }			t_map;
 
 typedef struct s_window
@@ -68,7 +68,6 @@ int     map_width(char **map);
 int     map_height(char **map);
 int		ft_action(int keycode, t_window *game);
 void    display_win(t_map *map_info);
-// void    display_map(t_window *game, t_map *map_info);
 void    put_map(t_window *game, char **map, char *player_img);
 
 // movement functions
@@ -78,8 +77,12 @@ void    left_handler(int keycode, t_window *game);
 void    right_handler(int keycode, t_window *game);
 void 	collectibles_count(t_window *map);
 void 	player_pos(t_window *game, char **map);
+int    floodfill(char **map, int x, int y, char target);
+int    floodfill_app(char **map, int x, int y);
 
 // parsing functions
+int	get_x(char **map);
+int	get_y(char **map);
 void	parse_map(char *argv, char **map);
 void	check_map(char **map);
 void	check_nonvalid(char **map);

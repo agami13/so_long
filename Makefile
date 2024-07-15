@@ -6,9 +6,9 @@ SRCS	=	srcs/so_long.c \
 			srcs/parsing.c \
 			srcs/parsing_utils.c \
 			srcs/utils.c \
-			srcs/map_blocked.c \
 			srcs/movment.c \
 			srcs/finish.c \
+			srcs/floodfill.c \
 			srcs/display_win.c \
 			srcs/struct_fill.c \
 			srcs/display_map.c \

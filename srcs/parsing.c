@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:44:32 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/26 15:45:39 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 20:14:57 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,11 @@ void	parse_map(char *argv, char **map)
 	check_nonvalid(map);
 	check_map(map);
 	map_valid(map);
-	// map_blocked(map);
+	if (calculate_lines(map) > 1080 || ft_strlen(map[0]) > 1920)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Map is too big\n", 2);
+		ft_free(map);
+		exit(0);
+	}
 }
