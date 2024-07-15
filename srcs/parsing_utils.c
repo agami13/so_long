@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:31:02 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/04/26 12:47:08 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 21:47:04 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,4 +71,27 @@ void	map_valid(char **map)
 	player = 0;
 	collectible = 0;
 	map_valid2(map, exit, player, collectible);
+}
+void	is_rectangular(char **map)
+{
+	int	i;
+	int	j;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(map[0]);
+	while (map[i])
+	{
+		j = 0;
+		while (map[i][j])
+			j++;
+		if (j != len)
+		{
+			ft_putstr_fd("Error\n", 2);
+			ft_putstr_fd("Map is not rectangular\n", 2);
+			ft_free(map);
+			exit(0);
+		}
+		i++;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/08 20:04:54 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 19:33:23 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 21:30:50 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,28 @@ char	**map_reader(char *arv)
 	map = ft_split(line, '\n');
 	free(line);
 	return (map);
+}
+
+int collectible_count(char **map)
+{
+    int i;
+    int j;
+    int collectibles;
+
+    i = 0;
+    collectibles = 0;
+    while (map[i])
+    {
+        j = 0;
+        while (map[i][j])
+        {
+            if (map[i][j] == 'C')
+                collectibles++;
+            j++;
+        }
+        i++;
+    }
+    return (collectibles);
 }
 
 void player_pos(t_window *game, char **map)

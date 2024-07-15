@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:44:32 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 20:14:57 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 21:47:24 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,17 @@ void	check_arg(char *argv)
 	int	i;
 
 	i = 0;
-	if (ft_strnstr(argv, ".ber", ft_strlen(argv)) == NULL)
+	if (ft_strnstr(argv, ".ber.", ft_strlen(argv)) != NULL)
 	{
 		ft_putstr_fd("Error\n", 2);
 		ft_putstr_fd("Map file must have .ber extension\n", 2);
-		exit(1);
+		exit(0);
+	}
+	else if (ft_strnstr(argv, ".ber", ft_strlen(argv)) == NULL)
+	{
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("Map file must have .ber extension\n", 2);
+		exit(0);
 	}
 }
 
@@ -51,7 +57,7 @@ void	check_nonvalid(char **map)
 			{
 				ft_putstr_fd("Error\n", 2);
 				ft_putstr_fd("Map contains invalid characters\n", 2);
-				exit(1);
+				exit(0);
 			}
 			j++;
 		}
@@ -79,7 +85,7 @@ void	check_map(char **map)
 				{
 					ft_putstr_fd("Error\n", 2);
 					ft_putstr_fd("Map is not surrounded by walls\n", 2);
-					exit(1);
+					exit(0);
 				}
 			}
 			j++;
@@ -95,6 +101,7 @@ void	parse_map(char *argv, char **map)
 	check_nonvalid(map);
 	check_map(map);
 	map_valid(map);
+	is_rectangular(map);
 	if (calculate_lines(map) > 1080 || ft_strlen(map[0]) > 1920)
 	{
 		ft_putstr_fd("Error\n", 2);

@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:00:35 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 20:12:24 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 22:33:17 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,39 @@ int    floodfill(char **map, int x, int y, char target)
 	return (floodfill(map, x + 1, y, target) || floodfill(map, x - 1, y,
 			target) || floodfill(map, x, y + 1, target) || floodfill(map, x, y
 			- 1, target));
+}
+
+int floodfill_collec(char **map, int x, int y, int *collectibles)
+{
+	int found;
+
+    if (x < 0 || x >= calculate_lines(map) || y < 0 || y >= (int)ft_strlen(map[0])
+        || map[x][y] == '1' || map[x][y] == '*' || map[x][y] == 'E')
+        return (0);
+    if (map[x][y] == 'C')
+		(*collectibles)++;
+    map[x][y] = '*';
+    found = floodfill_collec(map, x + 1, y, collectibles) ||
+                floodfill_collec(map, x - 1, y, collectibles) ||
+                floodfill_collec(map, x, y + 1, collectibles) ||
+                floodfill_collec(map, x, y - 1, collectibles);
+    return (found);
+}
+
+int floodfill_app_collec(char **map, int x, int y)
+{
+    int collected;
+    int total;
+
+	collected = 0;	
+	total = collectible_count(map);
+	floodfill_collec(map, x, y, &collected);
+    if (collected < total)
+	{
+        ft_putstr_fd("Error\nNot all collectibles can be collected!\n", 2);
+        return (0);
+    }
+    return (1);
 }
 
 int    floodfill_app(char **map, int x, int y)

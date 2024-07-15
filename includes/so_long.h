@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 21:04:25 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 22:31:03 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,10 +79,16 @@ void 	collectibles_count(t_window *map);
 void 	player_pos(t_window *game, char **map);
 int    floodfill(char **map, int x, int y, char target);
 int    floodfill_app(char **map, int x, int y);
+int floodfill_collec(char **map, int x, int y, int *collectibles);
+int floodfill_app_collec(char **map, int x, int y);
 
 // parsing functions
+int floodfill_collectibles(char **map, int x, int y, char target, int *collected);
+int floodfill_app_collectibles(char **map, int x, int y);
 int	get_x(char **map);
 int	get_y(char **map);
+int collectible_count(char **map);
+void	is_rectangular(char **map);
 void	parse_map(char *argv, char **map);
 void	check_map(char **map);
 void	check_nonvalid(char **map);
@@ -95,7 +101,6 @@ void	ft_free(char **strs);
 void 	read_helper(char *line, char **map, char *argv);
 char	**map_reader(char *arv);
 t_map	*struct_filler(char **map);
-// void	map_blocked(char **map);
 
 
 char	*read_map(char *argv);

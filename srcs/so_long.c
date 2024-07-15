@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:07 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 20:03:53 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/15 22:33:58 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int main(int argc, char **argv)
 	map = map_reader(argv[1]);
 	map_test = map_reader(argv[1]);
 	parse_map(argv[1], map);
-	if (floodfill_app(map_test, get_x(map_test), get_y(map_test)) == 0)
+	if (floodfill_app_collec(map_test, get_x(map_test), get_y(map_test)) == 0
+		&& floodfill_app(map_test, get_x(map_test), get_y(map_test)) == 0)
 	{
 		ft_free(map);
 		return (0);
