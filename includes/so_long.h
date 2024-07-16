@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 22:31:03 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 00:59:06 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ typedef struct s_map
 	int		y;
 	int		moves;
 	char	**map_test;
-	char 	**map;
-}			t_map;
+	char	**map;
+}		t_map;
 
 typedef struct s_window
 {
@@ -35,8 +35,8 @@ typedef struct s_window
 	void	*window;
 	void	*img;
 	char	*addr;
-	int 	WIDTH;
-	int 	HEIGHT;
+	int		width;
+	int		height;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
@@ -45,49 +45,47 @@ typedef struct s_window
 	char	*up;
 	char	*down;
 	char	**map;
-	int	collectibles;
+	int		collectibles;
 	int		x;
 	int		y;
-	
-} 			t_window;
-
+}		t_window;
 
 // macros
-# define ESC 65307
-# define W 119
-# define A 97
-# define S 115
-# define D 100
+# define ESC	65307
+# define W		119
+# define A		97
+# define S		115
+# define D		100
+# define CLOSE	17
 # define TILE_SIZE 32
 
-
 // window functions
-void    clean(t_window *game);
-void    put_img(t_window *game, char *path, int x, int y);
-int     map_width(char **map);
-int     map_height(char **map);
+void	clean(t_window *game);
+void	put_img(t_window *game, char *path, int x, int y);
+int		map_width(char **map);
+int		map_height(char **map);
 int		ft_action(int keycode, t_window *game);
-void    display_win(t_map *map_info);
-void    put_map(t_window *game, char **map, char *player_img);
+void	display_win(t_map *map_info);
+void	put_map(t_window *game, char **map, char *player_img);
 
 // movement functions
-void    up_handler(int keycode, t_window *game);
-void    down_handler(int keycode, t_window *game);
-void    left_handler(int keycode, t_window *game);
-void    right_handler(int keycode, t_window *game);
-void 	collectibles_count(t_window *map);
-void 	player_pos(t_window *game, char **map);
-int    floodfill(char **map, int x, int y, char target);
-int    floodfill_app(char **map, int x, int y);
-int floodfill_collec(char **map, int x, int y, int *collectibles);
-int floodfill_app_collec(char **map, int x, int y);
+void	up_handler(int keycode, t_window *game);
+void	down_handler(int keycode, t_window *game);
+void	left_handler(int keycode, t_window *game);
+void	right_handler(int keycode, t_window *game);
+void	collectibles_count(t_window *map);
+void	player_pos(t_window *game, char **map);
 
 // parsing functions
-int floodfill_collectibles(char **map, int x, int y, char target, int *collected);
-int floodfill_app_collectibles(char **map, int x, int y);
-int	get_x(char **map);
-int	get_y(char **map);
-int collectible_count(char **map);
+int		close_win(t_window *game);
+int		floodfill(char **map, int x, int y, char target);
+int		floodfill_app(char **map, int x, int y);
+int		floodfill_collec(char **map, int x, int y, int *collectibles);
+int		floodfill_app_collec(char **map, int x, int y);
+void	extension(char **argv, char **map);
+int		get_x(char **map);
+int		get_y(char **map);
+int		collectible_count(char **map);
 void	is_rectangular(char **map);
 void	parse_map(char *argv, char **map);
 void	check_map(char **map);
@@ -98,14 +96,10 @@ void	map_valid2(char **map, int exit, int player, int collectible);
 void	map_valid3(int E, int player, int collectible);
 void	map_valid(char **map);
 void	ft_free(char **strs);
-void 	read_helper(char *line, char **map, char *argv);
+void	read_helper(char *line, char **map, char *argv);
 char	**map_reader(char *arv);
 t_map	*struct_filler(char **map);
-
-
 char	*read_map(char *argv);
-
-
 int		calculate_lines(char **map);
 
 #endif

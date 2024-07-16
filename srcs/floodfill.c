@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/15 19:00:35 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 22:33:17 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 01:31:57 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ int	get_x(char **map)
 	}
 	return (0);
 }
+
 int	get_y(char **map)
 {
 	int	x;
@@ -91,9 +92,12 @@ int floodfill_app_collec(char **map, int x, int y)
 	floodfill_collec(map, x, y, &collected);
     if (collected < total)
 	{
-        ft_putstr_fd("Error\nNot all collectibles can be collected!\n", 2);
-        return (0);
-    }
+		ft_putstr_fd("Error\n", 2);
+		ft_putstr_fd("cannot collect all the collectibles!\n", 2);
+		ft_free(map);
+	    return (0);
+	}
+	ft_free(map);
     return (1);
 }
 
@@ -106,20 +110,9 @@ int    floodfill_app(char **map, int x, int y)
     {
         ft_putstr_fd("Error\n", 2);
         ft_putstr_fd("No valid path found!\n", 2);
-        while (map[i])
-        {
-            free(map[i]);
-            i++;
-        }
-        free(map);
+		ft_free(map);
         return (0);
     }
-    i = 0;
-    while (map[i])
-    {
-        free(map[i]);
-        i++;
-    }
-    free(map);
+	ft_free(map);
     return (1);
 }
