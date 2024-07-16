@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 15:30:38 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/16 01:30:30 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:40:25 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_action(int keycode, t_window *game)
 {
-	static int	i = 0;
-
 	if (keycode == ESC)
 	{
 		clean(game);
@@ -23,7 +21,6 @@ int	ft_action(int keycode, t_window *game)
 	}
 	if (keycode == W || keycode == A || keycode == S || keycode == D)
 	{
-		i++;
 		if (keycode == W)
 			up_handler(keycode, game);
 		else if (keycode == D)
@@ -32,7 +29,7 @@ int	ft_action(int keycode, t_window *game)
 			down_handler(keycode, game);
 		else if (keycode == A)
 			left_handler(keycode, game);
-		ft_printf("Moves: %d\n", i);
+		ft_printf("Moves: %d\r", game->moves);
 	}
 	return (0);
 }
@@ -65,6 +62,7 @@ void	give_value(t_window *game, t_map *map_info)
 	game->down = "./imgs/back.xpm";
 	game->map = map_info->map;
 	game->collectibles = 0;
+	game->moves = 0;
 	player_pos(game, map_info->map);
 	collectibles_count(game);
 }

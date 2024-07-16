@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:31:02 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 21:47:04 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 20:03:51 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	map_valid3(int E, int player, int collectible)
 	if (E != 1 || player != 1 || collectible < 1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		ft_putstr_fd("Map Has 0 Collectibles Or More/Less Than 1 Exit/Player's Starting Point\n", 2);
+		ft_putstr_fd("Map Has 0 Collectibles ", 2);
+		ft_putstr_fd("Or More/Less Than 1 Exit/Player's Starting Point\n", 2);
 		exit(1);
 	}
 }
@@ -63,15 +64,16 @@ void	map_valid2(char **map, int exit, int player, int collectible)
 
 void	map_valid(char **map)
 {
-	int exit;
-	int player;
-	int collectible;
+	int	exit;
+	int	player;
+	int	collectible;
 
 	exit = 0;
 	player = 0;
 	collectible = 0;
 	map_valid2(map, exit, player, collectible);
 }
+
 void	is_rectangular(char **map)
 {
 	int	i;

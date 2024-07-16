@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/16 00:59:06 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 19:35:53 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ typedef struct s_window
 	char	*up;
 	char	*down;
 	char	**map;
+	int		moves;
 	int		collectibles;
 	int		x;
 	int		y;

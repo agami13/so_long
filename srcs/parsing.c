@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:44:32 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/15 21:47:24 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 20:01:17 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,10 +76,10 @@ void	check_map(char **map)
 	while (map[i])
 	{
 		j = 0;
-		while(map[i][j])
+		while (map[i][j])
 		{
 			if ((i == 0) || (i == lines - 1)
-			|| (j == 0) || (j == ft_strlen(map[i]) - 1))
+				|| (j == 0) || (j == ft_strlen(map[i]) - 1))
 			{
 				if (map[i][j] != '1')
 				{

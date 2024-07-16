@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 10:50:50 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/08 20:00:39 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 20:06:59 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@ void	ft_free(char **strs)
 	free(strs);
 }
 
-void read_helper(char *line, char **map, char *argv)
+void	read_helper(char *line, char **map, char *argv)
 {
 	int		bytes;
 	char	*temp;
 	int		fd;
-	
+
 	fd = open(argv, O_RDONLY);
 	bytes = 1;
 	while (bytes != 0)
@@ -57,6 +57,7 @@ char	*read_map(char *argv)
 {
 	char	*map;
 	char	*line;
+
 	map = malloc(1);
 	map[0] = '\0';
 	line = malloc(2);
@@ -69,4 +70,44 @@ char	*read_map(char *argv)
 	read_helper(line, &map, argv);
 	free(line);
 	return (map);
+}
+
+int	get_x(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] == 'P')
+				return (x);
+			y++;
+		}
+		x++;
+	}
+	return (0);
+}
+
+int	get_y(char **map)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	while (map[x])
+	{
+		y = 0;
+		while (map[x][y])
+		{
+			if (map[x][y] == 'P')
+				return (y);
+			y++;
+		}
+		x++;
+	}
+	return (0);
 }
