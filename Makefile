@@ -1,7 +1,5 @@
 NAME	=	so_long
 
-LIB		=	libft.a
-
 SRCS	=	srcs/so_long.c \
 			srcs/parsing.c \
 			srcs/parsing_utils.c \
@@ -19,28 +17,28 @@ CC		=	cc
 
 MLX = -Lminilibx-linux -lmlx_Linux -lX11 -lXext -lm
 
-CFLAGS	=	-Wall -Wextra -g
+CFLAGS	=	-Wall -Wextra -Werror
 
-LIB_PATH =	libft/
+LIBFT	=	libft/libft.a
 
 all: $(NAME)
 
-$(NAME):	$(OBJ) $(LIB_PATH) $(LIB)
-			$(CC) $(CFLAGS) -g $(OBJ) -L $(LIB_PATH) $(MLX) -lft -o $(NAME)
+$(NAME):	$(OBJ) $(LIBFT)
+			$(CC) $(CFLAGS) $(OBJ) -L libft/ $(MLX) -lft -o $(NAME)
 
-$(LIB_PATH) $(LIB):
-			$(MAKE) -s -C $(LIB_PATH)
+$(LIBFT):
+		make -s -C libft/
 
 %.o	 : %.c
-			$(CC) $(CFLAGS) -g -c $< -o $@
+			@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-			$(RM) $(OBJ)
-			$(MAKE) -s -C $(LIB_PATH) clean
+			@$(RM) $(OBJ)
+			@$(MAKE) -s -C libft/ clean
 
 fclean : clean
-			$(RM) $(NAME)
-			$(MAKE)	-s -C	$(LIB_PATH)	fclean
+			@$(RM) $(NAME)
+			@$(MAKE) -s -C libft/ fclean
 
 re	: fclean all
 
