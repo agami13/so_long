@@ -6,7 +6,7 @@
 /*   By: ybouaoud <ybouaoud@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 09:18:15 by ybouaoud          #+#    #+#             */
-/*   Updated: 2024/07/16 19:35:53 by ybouaoud         ###   ########.fr       */
+/*   Updated: 2024/07/16 20:19:38 by ybouaoud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ typedef struct s_map
 {
 	void	*img;
 	char	*path;
+	char	**map_test;
+	char	**map;
 	int		x;
 	int		y;
 	int		moves;
-	char	**map_test;
-	char	**map;
 }		t_map;
 
 typedef struct s_window
@@ -35,16 +35,16 @@ typedef struct s_window
 	void	*window;
 	void	*img;
 	char	*addr;
-	int		width;
-	int		height;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 	char	*left;
 	char	*right;
 	char	*up;
 	char	*down;
 	char	**map;
+	int		width;
+	int		height;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
 	int		moves;
 	int		collectibles;
 	int		x;
@@ -63,11 +63,11 @@ typedef struct s_window
 // window functions
 void	clean(t_window *game);
 void	put_img(t_window *game, char *path, int x, int y);
+void	display_win(t_map *map_info);
+void	put_map(t_window *game, char **map, char *player_img);
 int		map_width(char **map);
 int		map_height(char **map);
 int		ft_action(int keycode, t_window *game);
-void	display_win(t_map *map_info);
-void	put_map(t_window *game, char **map, char *player_img);
 
 // movement functions
 void	up_handler(int keycode, t_window *game);
@@ -83,10 +83,11 @@ int		floodfill(char **map, int x, int y, char target);
 int		floodfill_app(char **map, int x, int y);
 int		floodfill_collec(char **map, int x, int y, int *collectibles);
 int		floodfill_app_collec(char **map, int x, int y);
-void	extension(char **argv, char **map);
+int		calculate_lines(char **map);
 int		get_x(char **map);
 int		get_y(char **map);
 int		collectible_count(char **map);
+void	extension(char **argv, char **map);
 void	is_rectangular(char **map);
 void	parse_map(char *argv, char **map);
 void	check_map(char **map);
@@ -99,8 +100,7 @@ void	map_valid(char **map);
 void	ft_free(char **strs);
 void	read_helper(char *line, char **map, char *argv);
 char	**map_reader(char *arv);
-t_map	*struct_filler(char **map);
 char	*read_map(char *argv);
-int		calculate_lines(char **map);
+t_map	*struct_filler(char **map);
 
 #endif
